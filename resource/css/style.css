@@ -1,0 +1,191 @@
+@charset "UTF-8";
+
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+body{
+	min-height: 100vh;
+	background: #e3f2fd;
+}
+body, .video-timer, .video-controls, .video-controls__options{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+ul,ol{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.container{
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+.container.fullscreen{
+	max-width: 100%;
+	width: 100%;
+	padding: 0;
+}
+
+.video-timeline{
+	height: 7px;
+	width: 100%;
+	cursor: pointer;
+}
+.progress-area{
+	height: 3px;
+	background: rgba(255, 255, 255, 0.6);
+	position: relative;
+}
+.progress-area span{
+	color: #fff;
+	font-size: 13px;
+	position: absolute;
+	left: 50%;
+	top: -25px;
+	transform: translateX(-50%);
+	
+}
+.progress-area span,
+.progress-bar::before{
+	display: none;
+}
+.video-timeline:hover .progress-area span,
+.video-timeline:hover .progress-bar::before{
+	display: block;
+}
+.progress-bar{
+	width: 0%;
+	height: 100%;
+	position: relative;
+	background: #2289ff;
+}
+.progress-bar::before{
+	content: "";
+	height: 13px;
+	width: 13px;
+	border-radius: 50%;
+	background: inherit;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.video-timer{
+	font-size: 14px;
+	color: #efefef;
+	margin-left: 15px;
+}
+.video-timer__separator{
+	font-size: 14px;
+	margin: 0 5px;
+	font-family: "Open sans";
+}
+
+.speed-options{
+	width: 95px;
+	background: #fff;
+	border-radius: 4px;
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	bottom: 40px;
+	left: -40px;
+	transition: opacity 0.13s ease;
+}
+.speed-options li{
+	cursor: pointer;
+	font-size: 14px;
+	padding: 5px 0 5px 15px;
+}
+.speed-options li.active{
+	background: #2289ff;
+	color: #fff;
+}
+.speed-options.show{
+	opacity: 1;
+	pointer-events: auto;
+}
+.playback-content{
+	position: relative;
+}
+
+.video-controls{
+	padding: 5px 20px 10px;
+	width: 100%;
+}
+.video-controls__options{
+	width: 100%;
+}
+.video-controls__options:last-child{
+	justify-content: flex-end;
+}
+.video-controls__options:first-child{
+	justify-content: flex-start;
+}
+.video-controls button{
+	width: 40px;
+	height: 40px;
+	border: none;
+	color: #fff;
+	font-size: 20px;
+	background: none;
+	cursor: pointer;
+}
+.video-controls button :where(i, span){
+	width: 100%;
+	height: 100%;
+	line-height: 40px;
+}
+.video-controls__options input{
+	height: 4px;
+	max-width: 75px;
+}
+
+.box-controls{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -15px;
+	z-index: 1;
+	opacity: 0;
+	pointer-events: none;
+	transition: all 0.08s ease;
+}
+.container.show-controls .box-controls{
+	opacity: 1;
+	bottom: 0;
+	pointer-events: auto;
+	transition: all 0.13s ease;
+}
+.box-controls::before{
+	content: "";
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+	height: calc(100% + 35px);
+	z-index: -1;
+}
+
+.box-video{
+	background: #000;
+	border-radius: 4px;
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
+	font-size: 0;
+}
+.box-video video{
+	width: 100%;
+}
+
+
+
